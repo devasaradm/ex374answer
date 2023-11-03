@@ -1,0 +1,32 @@
+Answers:
+Go to hub.lab.example.com in browser.
+username and password already provided in instructions
+Then click collection “Repository Management”, “rh-certified” Expand the CLI Configuration, copy all the configuration from repo (in exam “published”)
+
+Create ansible.cfg file in  home directory 
+
+
+Step:1
+# vim ~/ansible.cfg - copy from hub.lab.example.com repository section then paste it here
+
+[galaxy]
+server_list = rh-certified_repo
+
+[galaxy_server.rh-certified_repo]
+url=https://hub.lab.example.com/api/galaxy/content/rh-certified/
+token=(Get the token from the hub)
+
+
+step:2
+Then, find the token in hub API Token then click load token.
+
+Paste the token in ansible.cfg file in token section (Note: Once you paste the token, Don’t load it again, the older one will expire)
+
+Expand the collection section and click Collections and change the filter into "rh-Certified" (# In exam “published”) In “rh-Certified”, you can find the netcommon collection 
+
+Step:3
+# mkdir /home/student/mycollections
+# ansible-galaxy collection install ansible.netcommon -p /home/student/mycollections
+# ansible-galaxy collection list -p /home/student/mycollections
+
+
