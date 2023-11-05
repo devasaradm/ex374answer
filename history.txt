@@ -1,0 +1,714 @@
+    1  sudo yum install git -y
+    2  ansible --version
+    3  sudo
+    4  su -
+    5  ansible-navigator --version
+    6  ansible-builder --version
+    7  podman --version
+    8  git config --global user.name "Martin Louise"
+    9  git config --global user.email martin@example.com
+   10  git config --global push.default simple
+   11  git config --global -l
+   12  git clone https://github.com/ssureshmuga/ex374question
+   13  git clone https://github.com/ssureshmuga/374
+   14  cd 374/
+   15  ll
+   16  cd create_user/
+   17  ll
+   18  cat ansible.cfg 
+   19  cd ..
+   20  cd
+   21  mkdir ex374question/create_user
+   22  cp -rv 374/create_user/* ex374question/create_user/
+   23  cd ex374question/create_user/
+   24  ll
+   25  rm ansible-navigator.log 
+   26  cat inventory 
+   27  rm README.md 
+   28  cat user_list.yaml 
+   29  vim user_list.yaml 
+   30  cat user
+   31  cat users.yml 
+   32  vi users.yml 
+   33  ll
+   34  cd
+   35  git clone https://github.com/ssureshmuga/ex374answer
+   36  cp -rv ex374question/create_user ex374answer/
+   37  cd ex374answer/
+   38  ll
+   39  cd create_user/
+   40  ll
+   41  vi user_list.yaml 
+   42  vi users.yml 
+   43  podman login -u admin -u redhat hub.lab.example.com
+   44  ll
+   45  cd ex374answer/
+   46  podman login -u admin -p redhat hub.lab.example.com
+   47  tll
+   48  ll
+   49  cd create_user/
+   50  ll
+   51  ansible-navigator run users.yml -m stdut
+   52  ansible-navigator run users.yml -m stdout
+   53  ll
+   54  mv user_list.yaml user_list.yml
+   55  ll
+   56  vi user_list.yml 
+   57  vi users.yml 
+   58  ansible-navigator run users.yml -m stdout
+   59  ansible dev -a 'tail /etc/passwd'
+   60  cd ..
+   61  cd
+   62  cd ex374question/
+   63  cd create_user/
+   64  ll
+   65  mv user_list.yaml user_list.yml
+   66  vi user_list.yml 
+   67  vi users.yml 
+   68  cd ..
+   69  git add .
+   70  git commit -m 'update files'
+   71  git push
+   72  cd
+   73  cd ex374answer/
+   74  git add .
+   75  git commit -m 'add files'
+   76  git push
+   77  cd
+   78  cd 374/
+   79  ll
+   80  cd web_server/
+   81  ll
+   82  rm ansible-navigator.log 
+   83  cd
+   84  cd ex374question/
+   85  mkdir web_server
+   86  cd -rv ../374/web_server/* .
+   87  cp -rv ../374/web_server/* .
+   88  ll
+   89  mv alias.conf ansible* apache-setup.yml inventory notinexam.yml web_server/
+   90  ll
+   91  rm README.md 
+   92  ll
+   93  cd web_server/
+   94  ll
+   95  vi alias.conf 
+   96  vi notinexam.yml 
+   97  cat ansible.cfg 
+   98  cat inventory 
+   99  cat apache-setup.yml 
+  100  ll
+  101  cat alias.conf 
+  102  cat notinexam.yml 
+  103  ll
+  104  cat notinexam.yml 
+  105  cat apache-setup.yml 
+  106  ll
+  107  cat notinexam.yml 
+  108  pwd
+  109  ll
+  110  rm notinexam.yml 
+  111  ll
+  112  vi apache-setup.yml 
+  113  cd
+  114  mkdir ex374answer/web_server
+  115  cp -rv ex374question/web_server/* ex374answer/web_server/
+  116  cd ex374question/
+  117  git add .
+  118  git commit -m "update files'
+  119  git commit -m 'update files'
+  120  git push 
+  121  cd
+  122  cd ex374answer/
+  123  ll
+  124  cd web_server/
+  125  ll
+  126  cat alias.conf 
+  127  vi apache-setup.yml 
+  128  cd
+  129  cd 374/
+  130  cd web_server/
+  131  ll
+  132  cp notinexam.yml ../../ex374question/
+  133  cp notinexam.yml ../../ex374answer/
+  134  cd 
+  135  cd ex374answer/
+  136  ll
+  137  cp notinexam.yml web_server/
+  138  cd 
+  139  cd ex374question/
+  140  ll
+  141  mv notinexam.yml web_server/
+  142  cd
+  143  cd ex374answer/
+  144  ll
+  145  rm notinexam.yml 
+  146  ll
+  147  cd web_server/
+  148  ll
+  149  ansible-navigator run notinexam.yml -m stdout
+  150  ansible-navigator run apache-setup.yml -m stdout
+  151  ll
+  152  vi apache-setup.yml 
+  153  ansible-navigator run apache-setup.yml -m stdout
+  154  vi apache-setup.yml 
+  155  ansible-navigator run apache-setup.yml -m stdout
+  156  ansible-galaxy collection list
+  157  ansible-galaxy collection install ansible.netcommon
+  158  ansible-navigator run apache-setup.yml -m stdout
+  159  ansible-galaxy collection list
+  160  ansible-galaxy collection install ansible.posix
+  161  ansible-galaxy collection list
+  162  ansible-navigator run apache-setup.yml -m stdout
+  163  vi apache-setup.yml 
+  164  git clone https://github.com/ssureshmuga/alias_httpd
+  165  cd alias_httpd/
+  166  ll
+  167  cat inventory 
+  168  ansible-navigator run apache-setup.yml -m stdout
+  169  vi alias.conf 
+  170  ansible-navigator run apache-setup.yml -m stdout
+  171  curl serverc
+  172  cd
+  173  cd ex374answer/web_server/
+  174  cat apache-setup.yml 
+  175  cd
+  176  diff alias_httpd/apache-setup.yml ex374answer/web_server/apache-setup.yml 
+  177  cp alias_httpd/apache-setup.yml ex374answer/web_server/
+  178  cd ex374answer/web_server/
+  179  ll
+  180  pwd
+  181  cd
+  182  cp alias_httpd/apache-setup.yml ex374question/web_server/apache-setup.yml 
+  183  cd ex374answer/web_server/
+  184  vi apache-setup.yml 
+  185  cd
+  186  cd ex374answer/web_server/
+  187  ll
+  188  ansible-navigator run apache-setup.yml -m stdout
+  189  pwd
+  190  cd 
+  191  cd ex374question/
+  192  git add .
+  193  git commit -m 'update files'
+  194  git push 
+  195  cd
+  196  cd ex374answer/
+  197  git add .
+  198  git commit -m 'update files'
+  199  git push
+  200  cd ../ex374question/
+  201  ll
+  202  mkdir web_content
+  203  cp -rv create_user/* web_content/
+  204  cd web_content/
+  205  ll
+  206  rm user*
+  207  ll
+  208  vi content_yml
+  209  mkdir ../../ex374answer/web_content
+  210  ll
+  211  cp -rv * ../../ex374answer/web_content/
+  212  ll
+  213  cd
+  214  cd ex374answer/web_content/
+  215  ll
+  216  vi content_yml 
+  217  ll
+  218  ansible-navigator run content_yml --tags blue -m stdout
+  219  vi content_yml 
+  220  ansible-navigator run content_yml --tags blue -m stdout
+  221  vi content_yml 
+  222  cat inventory 
+  223  vi content_yml 
+  224  ansible-navigator run content_yml --tags blue -m stdout
+  225  curl serverc
+  226  ansible-navigator run content_yml --tags green -m stdout
+  227  curl serverc
+  228  cd
+  229  cd ex374question/web_content/
+  230  vi content_yml 
+  231  cp ../../ex374answer/web_content/content_yml .
+  232  ll
+  233  vi content_yml 
+  234  cd ..
+  235  git add .
+  236  git commit -m 'update files'
+  237  git push
+  238  cd
+  239  cd ex374answer/
+  240  git add .
+  241  git commit -m 'add files'
+  242  git push
+  243  cd
+  244  pwd
+  245  cd ex374question/
+  246  mkdir tuning_ansible
+  247  cd tuning_ansible/
+  248  vi ansible.cfg
+  249  cd ..
+  250  ll
+  251  mkdir ../ex374answer/tuning_ansible
+  252  cp -rv tuning_ansible/* ../ex374answer/tuning_ansible/
+  253  vi tuning_ansible/ansible.cfg 
+  254  git add .
+  255  git commit -m 'add files'
+  256  git push
+  257  cd
+  258  cd ex374answer/
+  259  cd tuning_ansible/
+  260  ll
+  261  cat ansible.cfg 
+  262  vi ansible.cfg 
+  263  cd ..
+  264  git add .
+  265  git commit -m 'add files'
+  266  git push
+  267  mkdir create_multi_user
+  268  cd
+  269  cd ex374question/
+  270  mkdir create_multi_user
+  271  ll
+  272  cd ex374question/
+  273  ll
+  274  mkdir create_multi_user
+  275  cd create_multi_user/
+  276  ll
+  277  cp -rv ../create_user/* .
+  278  ll
+  279  rm users.yml 
+  280  cat user_list.yml 
+  281  vi user_list.yml 
+  282  cat user_list.yml 
+  283  ll
+  284  vi complex_users.yml
+  285  ll
+  286  cd
+  287  cd ex374answer/
+  288  ll
+  289  cd
+  290  cd ex374question/
+  291  cd create_multi_user/
+  292  ll
+  293  cp -rv * ../../ex374answer/create_multi_user/
+  294  cd ../../ex374answer/
+  295  ll
+  296  cd create_multi_user/
+  297  ll
+  298  vi complex_users.yml 
+  299  ansible-navigator run complex_users.yml -m stdout
+  300  vi complex_users.yml 
+  301  cd ..
+  302  git add .
+  303  git commit -m 'add files'
+  304  git push
+  305  cd
+  306  cd ex374question/
+  307  git add .
+  308  git commit -m 'add files'
+  309  git push
+  310  ll
+  311  cd ex374answer/
+  312  ll
+  313  cd
+  314  cp ex374answer/create_user/ansible.cfg .
+  315  cp ex374answer/create_user/inventory .
+  316  ll
+  317  cat ansible.cfg 
+  318  cat inventory 
+  319  vi inventory 
+  320  vi ansible.cfg 
+  321  mkdir mycollections
+  322  ansible-galaxy collection install ansible-netcommon -p mycollections
+  323  vi ansible.cfg 
+  324  ansible-galaxy collection install ansible-netcommon -p mycollections
+  325  vi ansible.cfg 
+  326  ansible-galaxy collection install ansible-netcommon mycollections
+  327  ansible-galaxy collection list
+  328  ansible-galaxy collection install ansible.netcommon -p /home/student/mycollections
+  329  ansible-galaxy collection list
+  330  cd ex374question/
+  331  7-Use_existing_collection.txt
+  332  vi 7-Use_existing_collection.txt
+  333  cd
+  334  cd ex374answer/
+  335  vi 7-Use_existing_collection.txt
+  336  ll
+  337  cd
+  338  mkdidir custom_collectoin
+  339  mkdir custom_collectoin
+  340  cd custom_collectoin/
+  341  ansible-galaxy collection init rhel.user
+  342  tree 
+  343  cd rhel/user/roles/
+  344  ansible-galaxy role init newuser
+  345  tree 
+  346  cd ..
+  347  tree 
+  348  cd ../..
+  349  cd ..
+  350  ll
+  351  mv custom_collectoin ex374answer/
+  352  mv custom_collectoin ex374question/
+  353  cd ex374answer/
+  354  ll
+  355  cp -r custom_collectoin ../ex374question/
+  356  ll ../ex374question/
+  357  ll
+  358  cd custom_collectoin/
+  359  tree 
+  360  ll
+  361  cd ..
+  362  ll
+  363  cd
+  364  ll
+  365  cp ansible.cfg inventory ex374answer/
+  366  cd ex374answer/custom_collectoin/
+  367  cd rhel/user/
+  368  mkdir meta
+  369  vim meta/runtime.yml
+  370  cd roles/
+  371  tree 
+  372  vim newuser/templates/motd.j2
+  373  vim newuser/tasks/main.yml 
+  374  ll
+  375  vim newuser/templates/motd.j2 
+  376  cat newuser/templates/motd.j2 
+  377  cat newuser/tasks/main.yml 
+  378  cd ..
+  379  ansible-galaxy collection build
+  380  ls
+  381  ll
+  382  cp rhel-user-1.0.0.tar.gz ~/ex374answer/custom_collectoin/
+  383  ll
+  384  cd
+  385  cd ex374question/
+  386  git add .
+  387  git commit -m 'add files'
+  388  git push
+  389  cd ../ex374answer/
+  390  git add .
+  391  git commit -m 'add files'
+  392  git push
+  393  cd
+  394  cd ex374question/
+  395  mkdir ee-user
+  396  cd ee-user/
+  397  vim execution-environment.yml
+  398  vim requirements.yml
+  399  ansible-builder --version
+  400  ansible-builder create
+  401  ll
+  402  vi execution-environment.yml 
+  403  ansible-builder create
+  404  tree 
+  405  cp ~/ex374answer/custom_collectoin/rhel-user-1.0.0.tar.gz context/_build/
+  406  tree context/
+  407  podman login -u admin -p redhat hub.lab.example.com
+  408  ansible-builder build -t hub.lab.example.com/ee-user-environment:2.0
+  409  tree 
+  410  podman images
+  411  podman push hub.lab.example.com/ee-user-environment:2.0
+  412  pwd
+  413  cd ..
+  414  ll
+  415  cp -rv ee-user ../ex374answer/
+  416  cd ../ex374answer/
+  417  ll
+  418  tree ee-user/
+  419  cd ../ex374question/
+  420  ll
+  421  cd ee-user/
+  422  ll
+  423  rm -rv *
+  424  vi 9-custom_execution_environment-1
+  425  ll
+  426  cd ..
+  427  git add .
+  428  git commit -m 'add files'
+  429  git push
+  430  cd 
+  431  cd ex374answer/
+  432  git add .
+  433  git commit -m 'add files'
+  434  git push
+  435  cd 
+  436  cd ex374question/
+  437  ll
+  438  mkdir ee-python
+  439  cd ee-python/
+  440  cp ../../ex374answer/ee-user/execution-environment.yml .
+  441  vim execution-environment.yml 
+  442  ll
+  443  rm execution-environment.yml 
+  444  vi 10-Custom_execution_environment-2
+  445  cd 
+  446  cd ex374question/
+  447  ll
+  448  cp -rv ee-python ../ex374answer/
+  449  cd ../ex374answer/
+  450  ll
+  451  cd ee-python/
+  452  ll
+  453  rm 10-Custom_execution_environment-2 
+  454  cp ../ee-user/execution-environment.yml .
+  455  vim execution-environment.yml 
+  456  cd ..
+  457  cd ee-user/
+  458  vi execution-environment.yml 
+  459  ll
+  460  mv requirements.yml requirements.txt
+  461  ll
+  462  cd
+  463  cd ex374answer/ee-python/
+  464  ll
+  465  vim requirements.txt
+  466  vim bindep.txt
+  467  cat requirements.txt 
+  468  cat bindep.txt 
+  469  ansible-builder create
+  470  tree 
+  471  ll
+  472  rm :\:wq 
+  473  rm :wq
+  474  ll
+  475  ansible-builder create
+  476  tree 
+  477  ansible-builder build -t hub.lab.example.com/ee-python-environment:1.0
+  478  podman images
+  479  podman push hub.lab.example.com/ee-python-environment:1.0
+  480  ped
+  481  pwd
+  482  cd ..
+  483  git add .
+  484  git commit -m 'add files'
+  485  git push
+  486  cd 
+  487  cd ex374question/
+  488  git add .
+  489  git commit -m 'add files'
+  490  git push
+  491  cd 
+  492  cd ex374question/
+  493  mkdir dynamic_inventory
+  494  cd dynamic_inventory/
+  495  cd
+  496  git clone https://github.com/ssureshmuga/374/tree/main
+  497  git clone https://github.com/ssureshmuga/374
+  498  ll
+  499  cd 374/
+  500  ll
+  501  cd inventory-dynamic/
+  502  ll
+  503  cp -rv inventory* hosts ansible.cfg ansible-navigator.yml ../../ex374question/dynamic_inventory/
+  504  cd
+  505  cd ex374question/dynamic_inventory/
+  506  ll
+  507  chmod +x inventoryw.py 
+  508  ll
+  509  ansible-navigator inventory -i inventorya.py 
+  510  ansible-navigator inventory -i inventorya.py --graph -m stdout
+  511  ansible-navigator inventory -i inventoryw.py --graph -m stdout
+  512  cd ..
+  513  cp -rv dynamic_inventory ../ex374answer/
+  514  cd ../ex374answer/
+  515  ll
+  516  cd dynamic_inventory/
+  517  ll
+  518  vi main.yml
+  519  vim main.sh
+  520  ll
+  521  vim main.sh
+  522  ll
+  523  chmod +x main.sh 
+  524  ll
+  525  sh main.sh 
+  526  ssh servera
+  527  cd ..
+  528  git add .
+  529  git commit -m 'add files'
+  530  git push
+  531  ll
+  532  cd ../ex374question/
+  533  git add .
+  534  git commit -m 'add files'
+  535  git push
+  536  mkdir master_playbook
+  537  cd master_playbook/
+  538  cp -rv ../dynamic_inventory/* .
+  539  ll
+  540  cd..
+  541  cd ..
+  542  cp -rv master_playbook ../ex374answer/
+  543  cd master_playbook/
+  544  ll
+  545  chmod -x inventory*
+  546  ll
+  547  cd 
+  548  cd ex374answer/
+  549  cd master_playbook/
+  550  ll
+  551  vim master_playbook.yml
+  552  ansible-navigator run master_playbook.yml -e FILE=suresh -e DIRECTORY=/home/student/test -e CONTENT= "My HOSTS" --eei  ee-user-environment:2.0 -m stdout
+  553  ll
+  554  cat ansible
+  555  cat ansible.cfg 
+  556  cp ~/ansible.cfg .
+  557  cat ansible.cfg 
+  558  vi ansible.cfg 
+  559  ansible-navigator run master_playbook.yml -e FILE=suresh -e DIRECTORY=/home/student/test -e CONTENT= "My HOSTS" --eei  ee-user-environment:2.0 -m stdout
+  560  ll
+  561  pwd
+  562  ansible-navigator run master_playbook.yml -e FILE=suresh -e DIRECTORY=/home/student/test -e CONTENT="My HOSTS" --eei  ee-user-environment:2.0 -m stdout
+  563  ll
+  564  ansible-navigator run master_playbook.yml -e FILE=suresh -e DIRECTORY=/home/student/test -e CONTENT="My HOSTS" --eei  ee-user-environment:2.0 -i inventorya.py -m stdout
+  565  ssh servera
+  566  cd
+  567  cd ex374question/
+  568  mkdir user_playbook
+  569  cd 
+  570  cd ex374answer/
+  571  ll
+  572  cd master_playbook/
+  573  ll
+  574  cp -rv ansible.cfg hosts inventory* ansible-navigator.yml ../../ex374question/user_playbook/
+  575  cd
+  576  cd ex374question/user_playbook/
+  577  ll
+  578  vi main.yml
+  579  cd ..
+  580  cp -rv user_playbook ../ex374answer/
+  581  cd 
+  582  cd ex374answer/user_playbook/
+  583  ll
+  584  cd ..
+  585  ll
+  586  cd master_playbook/
+  587  ll
+  588  rm master_playbook-artifact-2023-11-03T06\:4*
+  589  ll
+  590  cd ..
+  591  cd user_playbook/
+  592  ll
+  593  cat ansible.cfg 
+  594  vi main.yml 
+  595  ll
+  596  vi main.yml 
+  597  ansible-galaxy collection list
+  598  cat ansible.cfg 
+  599  ansible-galaxy collection install ../custom_collectoin/rhel-user-1.0.0.tar.gz 
+  600  ansible-galaxy collection list
+  601  ansible-navigator run main.yml --eei ee-user-environment:2.0 -i inventorya.py -m stdout
+  602  ssh servera
+  603  cd ..
+  604  ll
+  605  cd create_multi_user/
+  606  ll
+  607  pwd
+  608  cd
+  609  cd ex374question/
+  610  cd create_multi_user/
+  611  ll
+  612  cat complex_users.yml 
+  613  cd 
+  614  cd ex374answer/create_multi_user/
+  615  ll
+  616  cat complex_users.yml 
+  617  ansible-navigator run complex_users.yml -m stdout
+  618  cat complex_users.yml 
+  619  ls
+  620  cat user_list.yml 
+  621  vi user_list.yml 
+  622  ansible-navigator run complex_users.yml -m stdout
+  623  ll
+  624  ansible-navigator run complex_users.yml --eei ee-supported-rhel8:2:0 -m stdout
+  625  podman images
+  626  ansible-navigator run complex_users.yml --eei ee-supported-rhel8 -m stdout
+  627  cat user_list.yml 
+  628  vi user_list.yml 
+  629  cat complex_users.yml 
+  630  vi complex_users.yml 
+  631  ansible-navigator run complex_users.yml --eei ee-supported-rhel8 -m stdout
+  632  vi complex_users.yml 
+  633  ansible-navigator run complex_users.yml --eei ee-supported-rhel8 -m stdout
+  634  cat user_list.yml 
+  635  cat complex_users.yml 
+  636  vi complex_users.yml 
+  637  ansible-navigator run complex_users.yml --eei ee-supported-rhel8 -m stdout
+  638  ssh serverc
+  639  ls
+  640  ll
+  641  cd ..
+  642  git add .
+  643  git commit -m 'add files;
+  644  git commit -m 'add files'
+  645  git push
+  646  cd
+  647  cd ex374question/
+  648  git add .
+  649  git commit -m 'add files'
+  650  git push
+  651  ll
+  652  cd .ssh/
+  653  ll
+  654  cat lab_rsa
+  655  cd
+  656  ll
+  657  cat ansible.cfg 
+  658  ssh serverd
+  659  vi inventory 
+  660  cat inventory 
+  661  ansible dev -m dnf -a 'yum install httpd -y'
+  662  ansible dev -m dnf -a 'name=httpd state=present'
+  663  ansible dev -m service -a 'name=httpd state=started enabled=yes'
+  664  ansible dev -m dnf -a 'name=firewalld state=present'
+  665  ansible dev -m service -a 'name=firewalld state=started enabled=yes'
+  666  ansible -m firewalld -a 'service=http state=enabled permanent=yes immediate=yes'
+  667  ansible -m firewalld -a 'service=http state=enabled permanent=yes'
+  668  ssh serverd
+  669  ssh serverf
+  670  curl serverd
+  671  ll
+  672  cd ex374answer/
+  673  cd dynamic_inventory/
+  674  ll
+  675  rm main-artifact-2023-11-03T06\:31\:56.806087+00\:00.json 
+  676  cd ..
+  677  cd master_playbook/
+  678  ll
+  679  cp master_playbook.yml ../
+  680  cd ..
+  681  ls
+  682  ll
+  683  git add .
+  684  git commit -m 'add files
+  685  '
+  686  git push
+  687  ll
+  688  cd ex374answer/
+  689  ll
+  690  cd create_multi_user/
+  691  ll
+  692  rm ansible-navigator.log 
+  693  cd 
+  694  mkdir create_multiuser
+  695  cd ex374answer/create_multi_user/
+  696  cp -rv * ~/create_multiuser/
+  697  cd 
+  698  cd create_multiuser/
+  699  ll
+  700  cat inventory 
+  701  ssh serverc
+  702  ll
+  703  cat  ansible.cfg 
+  704  cat user_list.yml 
+  705  vi inventory 
+  706  vi complex_users.yml 
+  707  ll
+  708  cd ex374answer/
+  709  ll
+  710  cd create_multi_user/
+  711  ll
+  712  history 
+  713  cd ..
+  714  history > history.txt
