@@ -4,3 +4,5 @@
      job: developer
    - name: student2
      job: developer
+   - name: student3
+     job: developer
