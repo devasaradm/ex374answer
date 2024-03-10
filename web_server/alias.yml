@@ -1,0 +1,15 @@
+---
+-   name: Web content update
+    hosts: prod
+    tasks:  
+      - name: create web content
+        ansible.builtin.template:
+          src: index.j2
+          dest: /var/www/html/index.html
+        notify: restart the httpd
+
+    handlers:
+      - name: restart the httpd
+        ansible.builtin.service:
+          name: httpd
+          state: restarted
