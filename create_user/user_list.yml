@@ -2,3 +2,5 @@
 - users:
    - name: john
      job: developer
+   - name: student
+     job: developer
