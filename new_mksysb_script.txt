@@ -1,0 +1,82 @@
+#!/usr/bin/ksh -x
+#File /tech/admin/mksysb.ksh
+#By Tom , 
+#First released: 2020-09-17
+#Revised 2022-10-14
+#
+HOST=`uname -n`
+if [ $(netstat -rn | grep 10.216.21.0| wc -l) == 1 ]; then
+        NIMH=10.216.21.206
+elif [ $(netstat -rn | grep 10.216.22.0| wc -l) == 1 ] ; then
+        NIMH=10.216.22.206
+elif [ $(netstat -rn | grep 10.218.21.0| wc -l) == 1 ] ; then
+        NIMH=10.218.21.206
+elif [ $(netstat -rn | grep 10.244.11.0| wc -l) == 1 ] ; then
+        NIMH=10.244.11.164
+elif [ $(netstat -rn | grep 10.245.11.0| wc -l) == 1 ] ; then
+        NIMH=10.245.11.166
+fi
+ 
+MNTPONT=/mksysb
+NIMLOGFILENAME=mksysb_status_${HOST}.log
+NIMLOG=${MNTPONT}/log/${NIMLOGFILENAME}
+UMOUNT=/usr/sbin/umount
+MOUNT=/usr/sbin/mount
+MKSYSB=/usr/bin/mksysb
+ 
+if [[ ! -d ${MNTPONT} ]]; then
+        mkdir ${MNTPONT}
+fi
+ 
+ROOTVGDSK=$(lspv |grep -w rootvg | awk {' print $1 '})
+lsdev -t power -l $ROOTVGDSK
+if [[ $? -eq 0 ]]; then
+	#ROOTVGIS=power
+	# pprootdev fix SAN boot
+	/usr/sbin/pprootdev fix
+fi
+ 
+${UMOUNT} ${MNTPONT}
+ 
+writelog()
+{
+echo [`date '+%Y-%m-%d %H:%M:%S'`] $1 |tee -a $NIMLOG
+}
+writelog "===========MKSYSB BACKUP SCRIPT LOG============="
+ 
+### mount the mksysb if does not exist already ###################
+{
+df -g ${MNTPONT} | grep -w "mksysb"
+if [ $? -ne 0 ]; then
+        ${MOUNT} -o nosuid $NIMH:/mksysb ${MNTPONT}
+                sleep 2
+        ### Taking ${HOST} mksysb backup #######################################
+        writelog "\nTaking ${HOST} mksysb backup"
+        ${MKSYSB} -e -i ${MNTPONT}/${HOST}.mksysb 
+		if [ $? -ne 0 ]; then
+			(echo "\n${HOST} mksysb job failed at $(date) \n"; uuencode ${NIMLOG} ${NIMLOGFILENAME} ) | mailx -s "`uname -s` - ${HOST} mksysb job failed" ETS_Asia_UNIX_Services@manulife.com
+		else
+			writelog "\n${HOST} mksysb backup has been completed successfully at $(date)"
+		fi
+        #echo "\n${HOST} mksysb backup successfully copied to NIM server \n" | mail -s "`uname -r` - mksysb on ${HOST}completed successfully" venkateswaran_guruswamy@manulife.com
+        sleep 2
+else
+        writelog "\n${HOST} mksysb mount or job failed"
+        echo "\n${HOST} mksysb mount failed at $(date) \n" | mail -s "`uname -s` - ${HOST} mksysb job failed" ETS_Asia_UNIX_Services@manulife.com
+        #echo "\n${HOST} mksysb mount or job failed at  \n" | mail -s "`uname -r` - ${HOST} mksysb job failed" "tom_kc_tang@manulife.com,Venkateswaran_Guruswamy@manulife.com,Byron_Pisani@manulife.com,Kanagaraj_Ramasamy@manulife.com"
+        exit 1;
+fi
+ 
+ROOTVGDSK=$(lspv |grep -w rootvg | awk {' print $1 '})
+lsdev -t power -l $ROOTVGDSK
+if [[ $? -eq 0 ]]; then
+	# pprootdev fixback SAN boot
+	/usr/sbin/pprootdev fixback
+fi
+ 
+cd /
+} | tee -a $NIMLOG
+${UMOUNT} ${MNTPONT} &
+ 
+ 
+  
